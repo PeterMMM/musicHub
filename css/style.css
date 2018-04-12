@@ -20,10 +20,15 @@ font-size: 20px;
 height: 45px;
 }
 
+
 .text{
 margin: 10px;
 font-family: TimeNewRome;
-font-size: 18px;
+font-size: 16px;
+}
+
+.showTxt{
+width: 20%;
 }
 
 .loginTitle
@@ -55,14 +60,16 @@ font-size: 26px;
 @media only screen and (max-width: 500px)
 {
 
+
 .loginCa
 {
 	width: 300px;
 	height: 250px;
-	margin: 50px;
-	padding: 20px;
+	margin: 40px;
+	padding: 10px;
 	margin-left: 30px;
 	margin-right: 20px;
+
 	float: none;
 	 box-shadow: 0 4px 8px 0 black;
     text-align: center;
@@ -81,6 +88,7 @@ font-size: 16px;
 {
 font-family: TimeNewRome;
 font-size: 12px;
+margin: 0px;
 }
 
 .loginTitle

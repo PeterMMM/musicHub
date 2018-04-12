@@ -1,4 +1,5 @@
 <?php
+echo"You reach newsfeed.php ,dude!!";
 
 ?>
 <html>
