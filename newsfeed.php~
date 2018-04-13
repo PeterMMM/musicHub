@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['status'])) {
+	header("Location:index.php");
+}
 ?>
 <html>
 <head>
@@ -9,6 +12,21 @@
 <link  rel="stylesheet" href="http://localhost/musichub/css/style.css"></style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
+.tagBar{
+font-family: TimeNewRome;
+background-color: skyblue;
+box-shadow: 2px 2px 5px black ;
+align-self: center;
+color: white;
+font-size: 20px;
+height: 45px;
+}
+.textNews{
+font-family: TimeNewRome;
+font-size: 18px;
+margin: 5px;
+}
+
 
 </style>
 </head>
@@ -17,7 +35,8 @@
 <div  class="tagBar"> <b class="textNews"> Music Hub </b>
 <button type="button"  class="btnTag" >Newsfeed</button>
 <button type="button" class="btnTag">Noti</button>
-<button type="button" class="btnTag" >Profile</button>
+<a href="profile.php"><button type="button" class="btnTag" >Profile</button></a>
+
 </div>
 
 <br>

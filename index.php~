@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['status'])) {
+	header("Location:newsfeed.php");
+}
+?>
 <html>
 <head>
 <script src="http://localhost/musichub/javascript/jquery-1.8.0.min.js"></script>
@@ -24,6 +30,11 @@ $result = $conn->query($sql);
 if($row = $result->fetch_assoc()) {
         if($userEmail == $row["user_email"] &&  $password == $row["user_pw"] )
         {
+        	
+        	//session start
+        	session_start();
+        	$_SESSION["status"]="login";
+        	
            header("Location: newsfeed.php");
         }elseif($userEmail == $row["user_email"] &&  $password != $row["user_pw"])
         {
@@ -49,7 +60,7 @@ $conn->close();
 	<tr class="text"><td  class="showTxt">Password : </td><td><input class="form-control" type="password" name="password" placeholder="password"</td><td><?php echo "<h6 style='font-family: TimeNewRome;color:red; padding:1.5px;'>".$pwErr."</h6>"; ?></td></tr>
 
 	
-	<tr><td colspan="3" style="padding:10px; padding-left:40%;"> <input class="btn btn-default btn-md" type="submit" value="login" name="login"/> </td></tr>
+	<tr><td colspan="3" style="padding:10px; padding-left:40%;"> <input class="btn btn-default btn-md" type="submit" value="Login" name="login"/> </td></tr>
 	</table>
 	</form>
 <a style="float:left;" class="text" href="signup.php">Sign up</a>

@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['status'])) {
+	header("Location:index.php");
+}
 ?>
 <html>
 <head>
@@ -23,6 +26,8 @@ font-family: TimeNewRome;
 font-size: 18px;
 margin: 5px;
 }
+
+
 </style>
 </head>
 <body>
@@ -30,12 +35,12 @@ margin: 5px;
 <div  class="tagBar"> <b class="textNews"> Music Hub </b>
 <button type="button"  class="btnTag" >Newsfeed</button>
 <button type="button" class="btnTag">Noti</button>
-<button type="button" class="btnTag" >Profile</button>
+<a href="profile.php"><button type="button" class="btnTag" >Profile</button></a>
+
 </div>
 
 <br>
 
 
-<a href="index.php" class="btn btn-link" >login</a>
 </body>
 </html>

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['status'])) {
+	header("Location:newsfeed.php");
+}
+?>
 <html>
 <head>
 <script src="http://localhost/musichub/javascript/jquery-1.8.0.min.js"></script>
@@ -61,28 +67,37 @@ width: 35%;
 	$userEmail = $password = $emailErr = $pwErr = "";
 
 //get data from form
-if(isset($_POST['login'])) {
+if(isset($_POST['signup'])) {
+	$fname = $_POST["fname"];
+	$lname = $_POST["lname"];	
 $userEmail = $_POST["email"] ;
 $password = $_POST["password"];
-
+$gender = $_POST["gender"];
+$dob = $_POST["dob"];
+$country = $_POST["country"];
 
 //get username and email from db
-$sql = "SELECT user_lname, user_email, user_pw FROM user_info_file WHERE user_email = '$userEmail' OR user_pw = '$password' " ;
-$result = $conn->query($sql);
+$sqlt = "SELECT user_lname, user_email FROM user_info_file WHERE user_email = '$userEmail' OR user_pw = '$password' " ;
+$result = $conn->query($sqlt);
 
 if($row = $result->fetch_assoc()) {
-        if($userEmail == $row["user_email"] &&  $password == $row["user_pw"] )
+        if($userEmail == $row["user_email"] )
         {
-           header("Location: newsfeed.php");
-        }elseif($userEmail == $row["user_email"] &&  $password != $row["user_pw"])
-        {
-        	 $pwErr= "Your password is wrong! ";
-       }elseif($userEmail != $row["user_email"] &&  $password == $row["user_pw"])
-       {
-       	$emailErr= "Your email is wrong";
+        		$emailErr = "Your email is already used!!";
+       }else {
+       	
+//get username and email from db
+$sql = "INSERT INTO  user_info_file (user_fname, user_lname, user_email, user_pw, user_gender, user_dob, user_country) 
+VALUES ('$fname','$lname','$userEmail','$password','$gender','$dob','$country');" ;
+				if($result = $conn->query($sql)=== TRUE )
+				{
+					header("Location: newsfeed.php");
+				}else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
        }
      }
-	
 $conn->close();
 }
 ?>
@@ -95,7 +110,7 @@ $conn->close();
 <form action="" method="POST" role="form">
 	<table><tr class="text"><td class="showTxt">Name : </td><td><input class="form-control"  type="text" name="fname" placeholder="first name" required/></td></tr>
 	<tr class="text"><td class="showTxt"> </td><td>	<input class="form-control" type="text" name="lname" placeholder="last name" required/></td></tr>			
-		<tr class="text"><td class="showTxt">Email : </td><td><input class="form-control" type="email" name="email" placeholder="email"/></td></tr>
+		<tr class="text"><td class="showTxt">Email : </td><td><input class="form-control" type="email" name="email" placeholder="email"/></td><td ><?php echo "<h6 style='font-family: TimeNewRome;color:red; padding:1.5px;'>".$emailErr."</h6>"; ?></td></tr>
 	<tr class="text"><td class="showTxt">Password : </td><td><input class="form-control"  type="password" name="password" placeholder="password"/></td></tr>
 	<tr class="text"><td class="showTxt">Re-password : </td><td><input class="form-control"  type="password" name="re-password" placeholder="re-password"/></td></tr>
 	<tr class="text"><td class="showTxt">Gender : </td><td>Male   <input  type="radio" name="gender"  value="male"/> Female  <input  type="radio" name="gender"  value="female"/>Other  <input  type="radio" name="gender"  value="other"/></td></tr>

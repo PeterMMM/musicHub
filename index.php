@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['status'])) {
+	header("Location:newsfeed.php");
+}
+?>
 <html>
 <head>
 <script src="http://localhost/musichub/javascript/jquery-1.8.0.min.js"></script>
@@ -24,6 +30,11 @@ $result = $conn->query($sql);
 if($row = $result->fetch_assoc()) {
         if($userEmail == $row["user_email"] &&  $password == $row["user_pw"] )
         {
+        	
+        	//session start
+        	session_start();
+        	$_SESSION["status"]="login";
+        	
            header("Location: newsfeed.php");
         }elseif($userEmail == $row["user_email"] &&  $password != $row["user_pw"])
         {
