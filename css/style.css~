@@ -1,5 +1,43 @@
+//for sign up
 
-//top  blue bar
+
+// in newsfeed 
+
+//for blue bar
+.textNews{
+font-family: TimeNewRome;
+font-size: 14px;
+}
+.btnTag {
+	font-size: 14px;
+	border: 0;
+	margin-right: 2px;
+	width: 20%;
+	height: 45px;
+	background-color:skyblue;
+}
+.btnTag:hover {
+	color: black;
+	background-color: #00b8e6;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+@media only screen and (max-width: 500px)
+{
+.btnTag {
+		font-size: 14px;
+	border: 0;
+	margin-right: 2px;
+	width: 20%;
+	height: 45px;
+	background-color:skyblue;}
+.btnTag:hover {
+	color: black;
+	background-color: whitesmoke;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+}
+
+//in index file
 
 
 .btn{
@@ -29,6 +67,7 @@ font-size: 16px;
 
 .showTxt{
 width: 20%;
+
 }
 
 .loginTitle
@@ -60,24 +99,19 @@ font-size: 26px;
 @media only screen and (max-width: 500px)
 {
 
-
 .loginCa
 {
-	width: 300px;
-	height: 250px;
-	margin: 40px;
-	padding: 10px;
-	margin-left: 30px;
-	margin-right: 20px;
-
-	float: none;
+	width: 90%;
+	height: 300px;
+	margin: 5%;
+	padding: 20px;
 	 box-shadow: 0 4px 8px 0 black;
     text-align: center;
-}	
+}
 	
 .blueBar{
 
-padding: 6px;
+padding: 10px;
 margin: 0px;
 height:  35px;
 font-size: 16px;
@@ -88,7 +122,7 @@ font-size: 16px;
 {
 font-family: TimeNewRome;
 font-size: 12px;
-margin: 10px;
+margin: 0px;
 }
 
 .loginTitle
