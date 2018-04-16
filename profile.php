@@ -35,6 +35,16 @@ font-size: 18px;
 margin: 5px;
 }
 
+@media(max-width: 600px)
+{
+.textNews{
+ display: none;
+}
+}
+body
+{
+background-color: whitesmoke;
+}
 
 </style>
 </head>
@@ -42,8 +52,9 @@ margin: 5px;
 
 <div  class="tagBar"> <b class="textNews"> Music Hub </b>
 <a href="newsfeed.php"><button type="button"  class="btnTag" >Newsfeed</button></a>
+<a href="toprate.php"><button type="button"  class="btnTag" >TopBoard</button></a>
 <a href=""><button type="button" class="btnTag">Noti</button></a>
-<a href="profile.php"><button type="button" class="btnTag" >Profile</button></a>
+<button type="button" class="btnTag" >Profile</button>
 </div>
 <div class="frame">
 
