@@ -10,6 +10,22 @@ if(isset($_SESSION['status'])) {
 <link  rel="stylesheet" href="http://localhost/musichub/css/bootstrap.min.css"></style>
 <link  rel="stylesheet" href="http://localhost/musichub/css/style.css"></style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+@media(max-width: 600px)
+{
+.loginCa
+{
+
+	width: 90%;
+	height: 250px;
+	margin: 5%;
+	padding: 5%;
+	 box-shadow: 0 4px 8px 0 black;
+   
+}
+
+
+</style>
 </head>
 <body>
 <?php
