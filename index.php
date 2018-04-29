@@ -7,25 +7,18 @@ if(isset($_SESSION['status'])) {
 <html>
 <head>
 <script src="http://localhost/musichub/javascript/jquery-1.8.0.min.js"></script>
-<link  rel="stylesheet" href="http://localhost/musichub/css/bootstrap.min.css"></style>
-<link  rel="stylesheet" href="http://localhost/musichub/css/style.css"></style>
+<link  rel="stylesheet" href="http://localhost/musichub/css/bootstrap.min.css">
+<link  rel="stylesheet" href="http://localhost/musichub/css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
-@media(max-width: 600px)
-{
-.loginCa
-{
+<script type="text/javascript">
 
-	width: 90%;
-	height: 250px;
-	margin: 5%;
-	padding: 5%;
-	 box-shadow: 0 4px 8px 0 black;
-   
+if (screen.width <= 699) {
+window.location = "mobile.index.php";
 }
 
+</script>
 
-</style>
+
 </head>
 <body>
 <?php
@@ -40,7 +33,7 @@ $password = $_POST["password"];
 
 
 //get username and email from db
-$sql = "SELECT user_lname, user_email, user_pw FROM user_info_file WHERE user_email = '$userEmail' OR user_pw = '$password' " ;
+$sql = "SELECT user_lname, user_fname, user_email, user_pw FROM user_info_file WHERE user_email = '$userEmail' OR user_pw = '$password' " ;
 $result = $conn->query($sql);
 
 if($row = $result->fetch_assoc()) {
@@ -50,8 +43,10 @@ if($row = $result->fetch_assoc()) {
         	//session start
         	session_start();
         	$_SESSION["status"]="login";
+        	$_SESSION["userLname"] =  $row["user_lname"] ;
+        	$_SESSION["userFname"] = $row["user_fname"];
         	
-           header("Location: newsfeed.php");
+          header("Location: newsfeed.php");
         }elseif($userEmail == $row["user_email"] &&  $password != $row["user_pw"])
         {
         	 $pwErr= "Your password is wrong! ";

@@ -1,0 +1,90 @@
+
+.tagBar{
+font-family: TimeNewRome;
+background-color: skyblue;
+box-shadow: 2px 2px 5px black ;
+align-self: center;
+color: white;
+font-size: 20px;
+height: 45px;
+}
+.textNews{
+font-family: TimeNewRome;
+font-size: 18px;
+margin: 5px;
+}
+
+.addPostFrame
+{
+background-color: white;
+width: 100%;
+height: 20%;
+
+padding: 5px;
+margin-top: 0px;
+box-shadow: 2px 2px 3px  2px gray ;
+}
+.addPost
+{
+background-color: #f2f2f2;
+width: 80%;
+height: 60%;
+color: black;
+}
+.showPostFrame
+{
+margin-top: 10px;
+width: 100%;
+height: 100%;
+
+}
+.image
+{
+ width: 30px;
+ height: 30px;
+ float: left;
+
+}
+ul il
+{
+
+
+}
+.showPost
+{	
+box-shadow: 2px 2px 2px  2px gray;
+		
+		height: 230px;
+		margin-bottom: 10px;
+					background-color: azure;
+}
+.PostUp
+{
+ padding: 5px;
+}
+.postDate
+{
+	
+ font-size: 10px;
+color: gray;
+margin: 5px;
+
+}
+.PostLow
+{
+  padding: 5px;
+}
+
+.host
+{
+	margin-top: 5px;
+background-color: whitesmoke;
+padding-top: 0px;
+padding: 10px;
+font-family: TimeNewRome;
+}
+
+.wrap-postAct
+{
+font-size: 13px;
+}

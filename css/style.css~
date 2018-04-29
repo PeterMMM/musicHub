@@ -1,3 +1,6 @@
+// newsfeed
+
+
 //profile
 
 a 
@@ -51,19 +54,7 @@ font-size: 14px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-
-.loginCa
-{
-	background-color: red;
-	margin: 5px;
-	width: 200px;
-	height: 300px;
-	margin: 50px;
-	padding: 25px;
-	 box-shadow: 0 4px 8px 0 black;
-    text-align: center;
 }
-
 
 }
 
