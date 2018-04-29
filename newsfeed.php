@@ -84,11 +84,12 @@ window.location = "mobile.newsfeed.php";
 	Your browser does not support the audio tag.
 </audio>
 </div><div class='PostLow'>
-<div class='postInfo'>&nbsp;3 Share &nbsp; 5 Comments &nbsp; 100 Up &nbsp; 3 Down</div>
-<div class='postAct'>&nbsp;<a href='http://localhost/musichub/sharePost.php'>Share</a>&nbsp;
-<a href='http://localhost/musichub/postDetail.php'>Comment</a>&nbsp;
-<a href='http://localhost/musichub/up.php'>Up</a>&nbsp;
-<a href='http://localhost/musichub/down.php'>Down</a>
+
+<div class='postAct'>&nbsp;
+<a href='sharePost.php'>Share</a>&nbsp;
+<a href='postDetail.php'>Comment</a>&nbsp;
+<a href='up.php?post_id=$postId ' class='up'>Up.".$upCo."</a>&nbsp;
+<a href='down.php?post_id=$postId' class='down'>Down.".$downCo."</a>
 </div>
 </div>
 		 		 ";
@@ -104,5 +105,13 @@ window.location = "mobile.newsfeed.php";
 
 </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function () {
+		$('.up').on('click',function () {
+			var
+			
+		})
+})
+</script>
 </body>
 </html>

@@ -33,7 +33,7 @@ $password = $_POST["password"];
 
 
 //get username and email from db
-$sql = "SELECT user_lname, user_fname, user_email, user_pw FROM user_info_file WHERE user_email = '$userEmail' OR user_pw = '$password' " ;
+$sql = "SELECT * FROM user_info_file WHERE user_email = '$userEmail' OR user_pw = '$password' " ;
 $result = $conn->query($sql);
 
 if($row = $result->fetch_assoc()) {
@@ -45,6 +45,7 @@ if($row = $result->fetch_assoc()) {
         	$_SESSION["status"]="login";
         	$_SESSION["userLname"] =  $row["user_lname"] ;
         	$_SESSION["userFname"] = $row["user_fname"];
+        	$_SESSION["userId"] = $row["user_id"];
         	
           header("Location: newsfeed.php");
         }elseif($userEmail == $row["user_email"] &&  $password != $row["user_pw"])

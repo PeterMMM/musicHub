@@ -45,6 +45,7 @@ if($row = $result->fetch_assoc()) {
         	$_SESSION["status"]="login";
         	$_SESSION["userLname"] =  $row["user_lname"] ;
         	$_SESSION["userFname"] = $row["user_fname"];
+        	$_SESSION["userId"] = $row["user_id"];
         	
           header("Location: newsfeed.php");
         }elseif($userEmail == $row["user_email"] &&  $password != $row["user_pw"])
