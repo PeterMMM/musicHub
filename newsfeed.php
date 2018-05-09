@@ -65,6 +65,7 @@ window.location = "mobile.newsfeed.php";
 	 	$downCo = $res['down_count'];
 	 	$userId = $res['user_id'];
 	 	$type = $res['type'];
+	 	$postFrom = "NF";
 		 $sqlUsr = "SELECT user_fname,user_lname FROM user_info_file WHERE user_id='$userId'";
 		 		 $userName  = mysqli_query($conn,$sqlUsr);
 		 echo "<div class='showPost'><div class='PostUp' >";
@@ -87,9 +88,9 @@ window.location = "mobile.newsfeed.php";
 
 <div class='postAct'>&nbsp;
 <a href='sharePost.php'>Share</a>&nbsp;
-<a href='postDetail.php'>Comment</a>&nbsp;
-<a href='up.php?post_id=$postId ' class='up'>Up.".$upCo."</a>&nbsp;
-<a href='down.php?post_id=$postId' class='down'>Down.".$downCo."</a>
+<a href='postDetail.php?post_id=$postId'>Comment</a>&nbsp;
+<a href='up.php?post_id=".$postId."&postFrom=".$postFrom."' class='up'>".$upCo.".Up</a>&nbsp;
+<a href='down.php?post_id=".$postId."&postFrom=".$postFrom."' class='down'>".$downCo.".Down</a>
 </div>
 </div>
 		 		 ";
@@ -105,13 +106,5 @@ window.location = "mobile.newsfeed.php";
 
 </div>
 </div>
-<script type="text/javascript">
-$(document).ready(function () {
-		$('.up').on('click',function () {
-			var
-			
-		})
-})
-</script>
 </body>
 </html>

@@ -13,10 +13,9 @@ if(isset($_GET['post_id']))
  {
  	echo $_SESSION['userId']."<br>";
 $postId = $_GET['post_id'];
+$postFrom = $_GET['postFrom'];
 $userId = $_SESSION["userId"];
- echo "user id : ". $userId."<br>";
- echo "post id :".$postId."<br>";
- 
+
 //if  already up or not (checking)
 $sqlGU = "SELECT * FROM up_file WHERE userId ='$userId' AND postId='$postId' ";
 $resGU = mysqli_fetch_array(mysqli_query($conn,$sqlGU));
@@ -33,7 +32,14 @@ echo "up post id : ".$rowGUpo."<br>";
 if(isset($rowGU)) 
 {
 	echo "EXIT ";
-header("Location: newsfeed.php");
+
+if($postFrom=="DT" ){
+echo "FROM DT";
+		header("Location: postDetail.php?post_id=".$postId);
+}elseif($postFrom=="NF") {
+	header("Location: newsfeed.php");
+	echo "FROM NF";
+}
 }else {
 	echo"not EXIT";
 	//if not already up
