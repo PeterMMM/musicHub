@@ -67,7 +67,14 @@ if ($conn->query($sqlUD) === TRUE) {
     echo "Error: " . $sqlUD . "<br>" . $conn->error;
 }
 echo"Reach finish";
+	
+if($postFrom=="DT" ){
+echo "FROM DT";
+		header("Location: postDetail.php?post_id=".$postId);
+}elseif($postFrom=="NF") {
 	header("Location: newsfeed.php");
+	echo "FROM NF";
+}
 }
 
 	

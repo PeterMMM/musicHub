@@ -40,10 +40,13 @@ while($res = mysqli_fetch_array($postList))
 <html>
 <head>
 <script src="http://localhost/musichub/javascript/jquery-1.8.0.min.js"></script>
+
+<link  rel="stylesheet" href="http://localhost/musichub/css/detailstyle.css">
+
 <link  rel="stylesheet" href="http://localhost/musichub/css/bootstrap.min.css">
 <link  rel="stylesheet" href="http://localhost/musichub/css/newsfeedStyle.css">
 <link  rel="stylesheet" href="http://localhost/musichub/css/style.css">
-<link  rel="stylesheet" href="http://localhost/musichub/css/detailstyle.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script type="text/javascript">
@@ -53,7 +56,117 @@ window.location = "mobile.newsfeed.php";
 }
 
 </script>
+<style>
 
+
+
+.wT
+{
+ background-color: azure;
+ width: 500px;
+ height: 60px;
+ margin: 5px;
+box-shadow: 2px 2px 2px  2px gray;
+padding-right: 5px;
+padding-left: 5px;
+}
+.wpro{
+	padding-top: 5px;
+	padding-left: 5px;
+	color: black;
+	font-family: Times;
+	font-size: 10px;
+	float: left;
+/*background-color: blue;*/
+width: 10%;
+height: 100%;
+}
+.wproU
+{
+height: 70%;
+width: 100%
+}
+.wproD
+{
+height: 30%;
+width: 100%;
+}
+.wtxt
+{
+float: left;
+/*background-color: yellow;*/
+width: 80%;
+height: 100%;
+}
+.wmore{
+	padding-top: 3px;
+	padding-left: 70px;
+float: right;
+/*background-color: green;*/
+width: 20%;
+height: 100%;
+}
+.wproBk{
+		float: left;
+/*background-color: lightcoral;*/
+width: 90%;
+height: 100%;
+}
+.bkUp{
+float: right;
+width: 100%;
+height: 50%;
+/*background-color: lightgreen;*/
+}
+.bkDown{
+float: right;
+width: 100%;
+height: 50%;
+/*background-color: lightgrey;*/
+}
+.wup{
+padding-left: 10px;
+float: left;
+/*background-color: aqua;*/
+width: 11%;
+height: 100%;
+}
+.wdown{
+float: left;
+/*background-color: pink;*/
+width: 12%;
+height: 100%;
+
+}
+.wrply
+{
+float: left;
+/*background-color: black;*/
+width: 10%;
+height: 100%;
+
+}
+.cmtListFrame{
+/*box-shadow: 2px 2px 2px  2px gray;*/
+
+margin-top: 0px;
+		padding-bottom: 5px;
+		padding-top: 0px;
+		padding-right: 0px;
+		padding-left: 0px;
+		height: wrap;
+		margin-bottom: 10px;
+					background-color: white;
+}
+.cmtPost{
+	margin: 5px;
+ width: 500px;
+ height: 60px;
+/* box-shadow: 2px 2px 2px  2px gray;*/
+
+					background-color: white;
+}
+</style>
 </head>
 <body>
 
@@ -65,6 +178,7 @@ window.location = "mobile.newsfeed.php";
 	//get info  from  db
 		$target_dir = "http://localhost/musichub/songs/";
 
+$postFrom = "DT";
 					//show  single post
 					
 		 $sqlUsr = "SELECT user_fname,user_lname FROM user_info_file WHERE user_id='$userId'";
@@ -81,7 +195,6 @@ window.location = "mobile.newsfeed.php";
 				
  echo "
 <br><div class='postDate'>".$postDate."</div>
-				
 
 <p> ".$postTxt."</p>
 <p><b>Artist :  <br>Song  Name: </b>".$songName."</p>		
@@ -97,33 +210,61 @@ window.location = "mobile.newsfeed.php";
 <a href='up.php?post_id=".$postId."&postFrom=".$postFrom."' class='up'>".$upCo.".Up</a>&nbsp;
 <a href='down.php?post_id=".$postId."&postFrom=".$postFrom."' class='down'>".$downCo.".Down</a>
 </div>
-</div>";
+</div></div>";
 ?>
-//create cmt start
-<div class="addPostFrame" class="well">
 
-<input type="text" class="addPost" name="postTxt">
-<input type="submit" value="Post" name="post">
-</div>
+<div class='cmtListFrame'>
 <?php
 $sqlcmt = "SELECT * FROM cmt_file WHERE post_id = '$postId' ";
 $cmtList = mysqli_query($conn,$sqlcmt);
 
-//cmt list show
+//cmt list show - post , up , down,reply -data still wrong
 while($res = mysqli_fetch_array($cmtList )) 
 					{
-						echo $res['cmt_id'].$res['user_id'];
+$cmtId = $res['cmt_id'];
+						$userId = $res['user_id'];
+						$cmtupCo = $res['cmt_up_co'];
+						$cmtdownCo = $res['cmt_down_co'];
+						$cmtReplyCo = $res['reply_co'];
+						
+		 $sqlOtherUsr = "SELECT user_fname,user_lname FROM user_info_file WHERE user_id='$userId'";
+		 		 $otherName  = mysqli_query($conn,$sqlOtherUsr);
+
+		while($resNa = mysqli_fetch_array($otherName)) 
+					{
+					$Name = $resNa['user_fname'].$resNa['user_lname'];
+					} 
+						echo"<div class='wT'>
+<div class='wpro'><div class='wproU'><img src='http://localhost/musichub/images/me.jpg' class='image'  alt='cute'></div><div class='wproD'>
+".$Name ."</div></div><div class='wproBk'><div class='bkUp'><div class='wtxt'>".$res['cmt_txt']."</div><div class='wmore'><button class='btn-link'><b>:</b></button></div></div>
+								<div class='bkDown'><div class='wup'>
+								<a href='cmtup.php?cmt_id=".$cmtId."&postFrom=".$postFrom."' class='up'>".$cmtupCo .".Up</a>&nbsp;
+</div><div class='wdown'>
+<a href='cmtdown.php?cmt_id=". $cmtId ."&postFrom=".$postFrom."' class='down'>".$cmtdownCo .".Down</a></div>
+<div class='wrply'>
+<a href='cmtreply.php?cmt_id=".$cmtId."&postFrom=".$postFrom."' class='down'>".$cmtReplyCo.".Reply</a></div></div></div>
+</div>
+"; 
+
 				}
 //end of cmt creator
-echo"
+?>
 </div>
-		 		 ";
-
+<div  class="cmtPost">
+<form action="uploadCmt.php" method="POST" >
+<input type="text" class="addPost" name="cmtTxt">
+<input type="text" name="postId" value="<?php echo $postId; ?>" style="display:none" >
+<input type="submit" value="Post" name="post" class="btn-info" >
+</div>
+<?php
 //end of if true  check
 	}else {
 			header("Location:newsfeed.php");
 	}				
-?>											
+
+?>
+
+
 
 
 </body>

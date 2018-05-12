@@ -43,10 +43,10 @@ window.location = "mobile.newsfeed.php";
 <input type="file" name="song"/>
 <br>
 <input type="text" class="addPost" name="postTxt">
-<input type="submit" value="Post" name="post">
+<input type="submit" value="Post" name="post" class="btn-info">
 </div>
 
-<div class="detailFrame" class="showPostFrame" >
+<div class="showPostFrame">
 
 	<?php
 	//get info  from  db
@@ -88,7 +88,7 @@ window.location = "mobile.newsfeed.php";
 
 <div class='postAct'>&nbsp;
 <a href='sharePost.php'>Share</a>&nbsp;
-<a href='postDetail.php?post_id=$postId'>Comment</a>&nbsp;
+<a href='postDetail.php?post_id=$postId'>".$cmtCo."Comment</a>&nbsp;
 <a href='up.php?post_id=".$postId."&postFrom=".$postFrom."' class='up'>".$upCo.".Up</a>&nbsp;
 <a href='down.php?post_id=".$postId."&postFrom=".$postFrom."' class='down'>".$downCo.".Down</a>
 </div>

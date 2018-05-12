@@ -15,9 +15,7 @@ if(isset($_GET['post_id']))
 $postId = $_GET['post_id'];
 $postFrom = $_GET['postFrom'];
 $userId = $_SESSION["userId"];
- echo "user id : ". $userId."<br>";
- echo "post id :".$postId."<br>";
- 
+
 //if  already up or not (checking)
 $sqlGU = "SELECT * FROM up_file WHERE userId ='$userId' AND postId='$postId' ";
 $resGU = mysqli_fetch_array(mysqli_query($conn,$sqlGU));

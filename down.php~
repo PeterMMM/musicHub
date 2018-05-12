@@ -13,6 +13,7 @@ if(isset($_GET['post_id']))
  {
  	echo $_SESSION['userId']."<br>";
 $postId = $_GET['post_id'];
+$postFrom = $_GET['postFrom'];
 $userId = $_SESSION["userId"];
  echo "user id : ". $userId."<br>";
  echo "post id :".$postId."<br>";
